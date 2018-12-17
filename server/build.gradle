@@ -33,6 +33,7 @@ dependencies {
     runtimeOnly('org.hsqldb:hsqldb')
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation('org.springframework.security:spring-security-test')
+    compile group: 'org.hibernate', name: 'hibernate-gradle-plugin', version: '5.4.0.Final'
 }
 
 dependencyManagement {

@@ -1,6 +1,10 @@
 package com.pcatalog.pcatalog.models.base;
 
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
+
 @MappedSuperclass
 public abstract class Model {
 
