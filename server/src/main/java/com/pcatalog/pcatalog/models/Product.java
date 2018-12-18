@@ -3,8 +3,10 @@ package com.pcatalog.pcatalog.models;
 import com.pcatalog.pcatalog.models.base.Model;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "products")
@@ -13,9 +15,10 @@ public class Product extends Model {
     private String name;
     @NotEmpty
     private String description;
-    @NotEmpty
+    @NotNull
+    @OneToOne
     private Photo photo;
-    @NotEmpty
+    @NotNull
     private Double price;
 
     protected Product(){}
