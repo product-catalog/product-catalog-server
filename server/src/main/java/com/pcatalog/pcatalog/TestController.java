@@ -28,11 +28,6 @@ public class TestController {
         return new ResponseEntity<>(product1, HttpStatus.OK);
     }
 
-    @GetMapping("/get")
-    public ResponseEntity<Iterable<Product>> get(){
-        return new ResponseEntity<>(productRepository.findAll(), HttpStatus.OK);
-    }
-
     @DeleteMapping("/delete")
     public ResponseEntity<Product> delete(@RequestBody Long id){
         Product product = productRepository.findByRecordId(id);
@@ -40,8 +35,24 @@ public class TestController {
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
-    @GetMapping("/test")
-    public String test(){
-        return "dfsfdfsdfdsfds";
+    @GetMapping("/get")
+    public ResponseEntity<Iterable<Product>> get(){
+        return new ResponseEntity<>(productRepository.findAll(), HttpStatus.OK);
+    }
+
+    //filter by name, price, both
+    @GetMapping("/getByName")
+    public ResponseEntity<Iterable<Product>> getByName(@RequestBody String name){
+        return new ResponseEntity<>(productRepository.findAllByName(name), HttpStatus.OK);
+    }
+
+    @GetMapping("/getByPrice")
+    public ResponseEntity<Iterable<Product>> getByPrice(@RequestBody Double price){
+        return new ResponseEntity<>(productRepository.findAllByPrice(price), HttpStatus.OK);
+    }
+
+    @GetMapping("/getByNameAndPrice")
+    public ResponseEntity<Iterable<Product>> getByNameAndPrice(@RequestBody FilterNameAndPriceDto filterNameAndPriceDto){
+        return new ResponseEntity<>(productRepository.findAllByNameAndPrice(filterNameAndPriceDto.getName(), filterNameAndPriceDto.getPrice()), HttpStatus.OK);
     }
 }

@@ -4,7 +4,13 @@ import com.pcatalog.pcatalog.models.Product;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Long> {
     Product findByRecordId(Long id);
+    List<Product> findAllByNameAndPrice(String name, Double price);
+    List<Product> findAllByPrice(Double price);
+    List<Product> findAllByName(String name);
+
 }
