@@ -34,6 +34,7 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test')
     testImplementation('org.springframework.security:spring-security-test')
     compile group: 'org.hibernate', name: 'hibernate-gradle-plugin', version: '5.4.0.Final'
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '1.0.0.RELEASE'
 }
 
 dependencyManagement {
