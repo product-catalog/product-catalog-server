@@ -29,7 +29,7 @@ public class TestController {
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<Product> delete(@RequestBody Long id){
+    public ResponseEntity<Product> delete(@RequestParam Long id){
         Product product = productRepository.findByRecordId(id);
         productRepository.delete(product);
         return new ResponseEntity<>(product, HttpStatus.OK);
