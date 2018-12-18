@@ -1,4 +1,4 @@
-package com.pcatalog.pcatalog;
+package com.pcatalog.pcatalog.dtos;
 
 import javax.persistence.Lob;
 import javax.validation.constraints.NotEmpty;

@@ -1,5 +1,6 @@
 package com.pcatalog.pcatalog;
 
+import com.pcatalog.pcatalog.dtos.ProductDto;
 import com.pcatalog.pcatalog.models.Photo;
 import com.pcatalog.pcatalog.models.Product;
 import com.pcatalog.pcatalog.repositories.PhotoRepository;
@@ -8,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/apply")

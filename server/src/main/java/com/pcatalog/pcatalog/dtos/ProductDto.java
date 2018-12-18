@@ -1,10 +1,4 @@
-package com.pcatalog.pcatalog;
-
-import com.pcatalog.pcatalog.models.Photo;
-import com.pcatalog.pcatalog.models.Product;
-
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotEmpty;
+package com.pcatalog.pcatalog.dtos;
 
 public class ProductDto {
     private String name;
