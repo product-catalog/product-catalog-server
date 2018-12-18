@@ -12,7 +12,7 @@ public class Product {
     @NotEmpty
     private String description;
     @NotEmpty
-    private String photo;
+    private Photo photo;
     @NotEmpty
     private Double price;
 
@@ -34,11 +34,11 @@ public class Product {
         this.description = description;
     }
 
-    public String getPhoto() {
+    public Photo getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(Photo photo) {
         this.photo = photo;
     }
 
