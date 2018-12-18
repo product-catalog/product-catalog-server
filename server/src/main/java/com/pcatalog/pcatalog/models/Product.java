@@ -1,12 +1,14 @@
 package com.pcatalog.pcatalog.models;
 
+import com.pcatalog.pcatalog.models.base.Model;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product extends Model {
     @NotEmpty
     private String name;
     @NotEmpty
