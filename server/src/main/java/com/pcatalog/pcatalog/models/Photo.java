@@ -20,7 +20,8 @@ public class Photo extends Model {
 
     protected Photo(){}
 
-    public Photo(String photo) {
+    public Photo(@NotEmpty String name, @NotEmpty String photo) {
+        setName(name);
         setPhoto(photo);
     }
 
@@ -30,5 +31,13 @@ public class Photo extends Model {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
