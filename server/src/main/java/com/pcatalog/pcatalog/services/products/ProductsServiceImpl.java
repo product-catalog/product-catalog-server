@@ -30,6 +30,9 @@ public class ProductsServiceImpl implements ProductsService {
     @Override
     public Product deleteProduct(Long id) {
         Product product = productRepository.findByRecordId(id);
+        if (product == null){
+            return null;
+        }
         productRepository.delete(product);
         return product;
     }

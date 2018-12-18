@@ -7,8 +7,10 @@ import com.pcatalog.pcatalog.repositories.PhotoRepository;
 import com.pcatalog.pcatalog.repositories.ProductRepository;
 import com.pcatalog.pcatalog.services.products.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -27,6 +29,9 @@ public class TestController {
     @DeleteMapping("/delete")
     public ResponseEntity<Product> delete(@RequestParam Long id) {
         Product product = productsService.deleteProduct(id);
+        if (product == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
