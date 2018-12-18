@@ -33,6 +33,13 @@ public class TestController {
         return new ResponseEntity<>(productRepository.findAll(), HttpStatus.OK);
     }
 
+    @DeleteMapping("/delete")
+    public ResponseEntity<Product> delete(@RequestBody Long id){
+        Product product = productRepository.findByRecordId(id);
+        productRepository.delete(product);
+        return new ResponseEntity<>(product, HttpStatus.OK);
+    }
+
     @GetMapping("/test")
     public String test(){
         return "dfsfdfsdfdsfds";
