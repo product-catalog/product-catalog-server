@@ -18,6 +18,13 @@ public class Product {
 
     protected Product(){}
 
+    public Product(@NotEmpty String name, @NotEmpty String description, @NotEmpty Photo photo, @NotEmpty Double price) {
+        setName(name);
+        setDescription(description);
+        setPhoto(photo);
+        setPrice(price);
+    }
+
     public String getName() {
         return name;
     }
