@@ -42,17 +42,17 @@ public class TestController {
 
     //filter by name, price, both
     @GetMapping("/getByName")
-    public ResponseEntity<Iterable<Product>> getByName(@RequestBody String name){
+    public ResponseEntity<Iterable<Product>> getByName(@RequestParam String name){
         return new ResponseEntity<>(productRepository.findAllByName(name), HttpStatus.OK);
     }
 
     @GetMapping("/getByPrice")
-    public ResponseEntity<Iterable<Product>> getByPrice(@RequestBody Double price){
+    public ResponseEntity<Iterable<Product>> getByPrice(@RequestParam Double price){
         return new ResponseEntity<>(productRepository.findAllByPrice(price), HttpStatus.OK);
     }
 
     @GetMapping("/getByNameAndPrice")
-    public ResponseEntity<Iterable<Product>> getByNameAndPrice(@RequestBody FilterNameAndPriceDto filterNameAndPriceDto){
-        return new ResponseEntity<>(productRepository.findAllByNameAndPrice(filterNameAndPriceDto.getName(), filterNameAndPriceDto.getPrice()), HttpStatus.OK);
+    public ResponseEntity<Iterable<Product>> getByNameAndPrice(@RequestParam String name, @RequestParam Double price){
+        return new ResponseEntity<>(productRepository.findAllByNameAndPrice(name, price), HttpStatus.OK);
     }
 }
