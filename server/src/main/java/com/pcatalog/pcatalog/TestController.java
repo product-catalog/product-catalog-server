@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/apply")
 public class TestController {
@@ -24,6 +26,11 @@ public class TestController {
         Product product1 = new Product(product.getName(), product.getDescription(), photo, product.getPrice());
         productRepository.save(product1);
         return new ResponseEntity<>(product1, HttpStatus.OK);
+    }
+
+    @GetMapping("/get")
+    public ResponseEntity<Iterable<Product>> get(){
+        return new ResponseEntity<>(productRepository.findAll(), HttpStatus.OK);
     }
 
     @GetMapping("/test")
