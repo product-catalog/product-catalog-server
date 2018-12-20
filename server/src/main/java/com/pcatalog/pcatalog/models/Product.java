@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "products")
-public class Product extends Model implements Serializable {
+public class Product extends Model {
     @NotEmpty
     private String name;
     @NotEmpty

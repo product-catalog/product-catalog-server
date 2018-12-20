@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "photos")
-public class Photo extends Model implements Serializable {
+public class Photo extends Model {
 
     @NotEmpty
     private String name;
