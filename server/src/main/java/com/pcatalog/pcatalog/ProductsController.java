@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/apply")
-public class TestController {
+public class ProductsController {
 
     @Autowired
     private ProductsService productsService;
