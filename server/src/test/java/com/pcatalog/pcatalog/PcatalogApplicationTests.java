@@ -9,15 +9,10 @@ import com.pcatalog.pcatalog.services.products.ProductsServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -33,6 +28,7 @@ public class PcatalogApplicationTests {
     private ProductsServiceImpl productsServiceImpl;
 
     @Test
+    @DirtiesContext
     public void createNewProduct_Should_BeSavedInDB_When_MethodCalled() {
         ProductDto productDto = new ProductDto("abc", "bcd", new PhotoDto("aa", "aa"), 2.0);
         Product product = productsServiceImpl.createNewProduct(productDto);
@@ -40,20 +36,25 @@ public class PcatalogApplicationTests {
     }
 
     @Test
+    @DirtiesContext
     public void createNewProduct_Should_ReturnTheNewProduct_When_MethodCalled() {
         ProductDto productDto = new ProductDto("abc", "bcd", new PhotoDto("aa", "aa"), 2.0);
         Product product = productsServiceImpl.createNewProduct(productDto);
-        Assert.assertEquals(product.getRecordId(), productRepository.findAll().get(productRepository.findAll().size() - 1).getRecordId());
+        Assert.assertEquals(product.getRecordId(), productRepository.findAll().get(productRepository.findAll().size()
+                - 1).getRecordId());
     }
 
     @Test
+    @DirtiesContext
     public void createNewProduct_Should_BePhotoSavedInDB_When_MethodCalled() {
         ProductDto productDto = new ProductDto("abc", "bcd", new PhotoDto("aa", "aa"), 2.0);
         Product product = productsServiceImpl.createNewProduct(productDto);
-        Assert.assertEquals(product.getPhoto().getRecordId(), photoRepository.findAll().get(photoRepository.findAll().size() - 1).getRecordId());
+        Assert.assertEquals(product.getPhoto().getRecordId(), photoRepository.findAll().get(photoRepository.findAll()
+                .size() - 1).getRecordId());
     }
 
     @Test
+    @DirtiesContext
     public void deleteProduct_Should_DeleteProduct_When_MethodCalled() {
         ProductDto productDto = new ProductDto("abc", "bcd", new PhotoDto("aa", "aa"), 2.0);
         Product product = productsServiceImpl.createNewProduct(productDto);
@@ -62,6 +63,7 @@ public class PcatalogApplicationTests {
     }
 
     @Test
+    @DirtiesContext
     public void deleteProduct_Should_ReturnDeletedProduct_When_MethodCalled() {
         ProductDto productDto = new ProductDto("abc", "bcd", new PhotoDto("aa", "aa"), 2.0);
         Product product = productsServiceImpl.createNewProduct(productDto);
@@ -70,12 +72,14 @@ public class PcatalogApplicationTests {
     }
 
     @Test
+    @DirtiesContext
     public void deleteProduct_Should_ReturnNull_When_ProductDoesntExists() {
         Product deletedProduct = productsServiceImpl.deleteProduct(10L);
         Assert.assertNull(deletedProduct);
     }
 
     @Test
+    @DirtiesContext
     public void getAllProducts_Should_ReturnListOfAllProductsInDB_When_Called() {
         ProductDto productDto = new ProductDto("abc", "bcd", new PhotoDto("aa", "aa"), 2.0);
         productsServiceImpl.createNewProduct(productDto);
@@ -85,6 +89,7 @@ public class PcatalogApplicationTests {
     }
 
     @Test
+    @DirtiesContext
     public void getProductByName_Should_ReturnListOfFilteredProductsInDB_When_Called() {
         ProductDto productDto = new ProductDto("abc", "bcd", new PhotoDto("aa", "aa"), 2.0);
         productsServiceImpl.createNewProduct(productDto);
@@ -95,6 +100,7 @@ public class PcatalogApplicationTests {
     }
 
     @Test
+    @DirtiesContext
     public void getProductByPrice_Should_ReturnListOfFilteredProductsInDB_When_Called() {
         ProductDto productDto = new ProductDto("abc", "bcd", new PhotoDto("aa", "aa"), 2.0);
         productsServiceImpl.createNewProduct(productDto);
@@ -105,6 +111,7 @@ public class PcatalogApplicationTests {
     }
 
     @Test
+    @DirtiesContext
     public void getProductByNameAndByPrice_Should_ReturnListOfFilteredProductsInDB_When_Called() {
         ProductDto productDto = new ProductDto("abc", "bcd", new PhotoDto("aa", "aa"), 2.0);
         productsServiceImpl.createNewProduct(productDto);
