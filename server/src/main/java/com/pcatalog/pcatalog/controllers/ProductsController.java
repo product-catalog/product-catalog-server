@@ -1,4 +1,4 @@
-package com.pcatalog.pcatalog;
+package com.pcatalog.pcatalog.controllers;
 
 import com.pcatalog.pcatalog.dtos.ProductDto;
 import com.pcatalog.pcatalog.models.Photo;
