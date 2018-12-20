@@ -6,10 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "photos")
-public class Photo extends Model {
+public class Photo extends Model implements Serializable {
 
     @NotEmpty
     private String name;

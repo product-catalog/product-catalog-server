@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service(value = "productsService")
 public class ProductsServiceImpl implements ProductsService {
 
@@ -38,8 +40,8 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
-    public Iterable<Product> getAllProducts() {
-        Iterable<Product> allProducts = productRepository.findAll();
+    public List<Product> getAllProducts() {
+        List<Product> allProducts = productRepository.findAll();
         return allProducts;
     }
 
