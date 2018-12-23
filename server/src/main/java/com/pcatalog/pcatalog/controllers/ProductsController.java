@@ -14,7 +14,7 @@ import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/apply")
+@RequestMapping("/product")
 public class ProductsController {
 
     @Autowired
@@ -35,7 +35,7 @@ public class ProductsController {
         return new ResponseEntity<>(product, HttpStatus.OK);
     }
 
-    @GetMapping("/get")
+    @GetMapping("/getAll")
     public ResponseEntity<Iterable<Product>> get() {
         Iterable<Product> allProducts = productsService.getAllProducts();
         return new ResponseEntity<>(allProducts, HttpStatus.OK);
