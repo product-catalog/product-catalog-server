@@ -59,4 +59,9 @@ public class ProductsController {
         Iterable<Product> filteredProductsByNameAndByPrice = productsService.getProductByNameAndByPrice(name, price);
         return new ResponseEntity<>(filteredProductsByNameAndByPrice, HttpStatus.OK);
     }
+
+    @GetMapping("/getById")
+    public ResponseEntity<Product> getProductById(@RequestParam Long id){
+        return new ResponseEntity<>(productsService.getByRecordId(id), HttpStatus.OK);
+    }
 }

@@ -62,4 +62,9 @@ public class ProductsServiceImpl implements ProductsService {
         Iterable<Product> filteredProductsByNameAndByPrice = productRepository.findAllByNameAndPrice(name, price);
         return filteredProductsByNameAndByPrice;
     }
+
+    @Override
+    public Product getByRecordId(Long id) {
+        return productRepository.findByRecordId(id);
+    }
 }
