@@ -13,4 +13,5 @@ public interface ProductsService {
     Iterable<Product> getProductByPrice(Double price);
     Iterable<Product> getProductByNameAndByPrice(String name, Double price);
     Product getByRecordId(Long id);
+    Product editProduct(Product product);
 }

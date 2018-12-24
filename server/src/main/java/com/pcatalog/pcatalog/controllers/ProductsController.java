@@ -64,4 +64,10 @@ public class ProductsController {
     public ResponseEntity<Product> getProductById(@RequestParam Long id){
         return new ResponseEntity<>(productsService.getByRecordId(id), HttpStatus.OK);
     }
+
+    @PutMapping("/edit")
+    public ResponseEntity<Product> editProduct(@RequestBody Product product){
+        productsService.editProduct(product);
+        return new ResponseEntity<>(product, HttpStatus.OK);
+    }
 }

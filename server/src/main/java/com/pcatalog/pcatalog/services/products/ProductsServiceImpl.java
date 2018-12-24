@@ -67,4 +67,9 @@ public class ProductsServiceImpl implements ProductsService {
     public Product getByRecordId(Long id) {
         return productRepository.findByRecordId(id);
     }
+
+    @Override
+    public Product editProduct(Product product) {
+        return productRepository.save(product);
+    }
 }
