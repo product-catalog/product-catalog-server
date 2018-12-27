@@ -2,6 +2,7 @@ package com.pcatalog.pcatalog.models;
 
 import com.pcatalog.pcatalog.models.base.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.Table;
@@ -17,20 +18,20 @@ public class Photo extends Model {
 
     @Lob
     @NotEmpty
-    private String photo;
+    private byte[] photo;
 
     protected Photo(){}
 
-    public Photo(@NotEmpty String name, @NotEmpty String photo) {
+    public Photo(@NotEmpty String name, @NotEmpty byte[] photo) {
         setName(name);
         setPhoto(photo);
     }
 
-    public String getPhoto() {
+    public byte[] getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
 

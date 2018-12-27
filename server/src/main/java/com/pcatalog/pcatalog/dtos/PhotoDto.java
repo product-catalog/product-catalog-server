@@ -7,11 +7,11 @@ public class PhotoDto {
 
     private String name;
 
-    private String photo;
+    private byte[] photo;
 
     protected PhotoDto(){}
 
-    public PhotoDto(String name, String photo){
+    public PhotoDto(String name, byte[] photo){
         this.name = name;
         this.photo = photo;
     }
@@ -24,11 +24,11 @@ public class PhotoDto {
         this.name = name;
     }
 
-    public String getPhoto() {
+    public byte[] getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
 }
