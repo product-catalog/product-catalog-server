@@ -67,7 +67,7 @@ public class ProductsController {
 
     @PutMapping("/edit")
     public ResponseEntity<Product> editProduct(@RequestBody Product product){
-        productsService.editProduct(product);
-        return new ResponseEntity<>(product, HttpStatus.OK);
+        Product product1 = productsService.editProduct(product);
+        return new ResponseEntity<>(product1, HttpStatus.OK);
     }
 }

@@ -18,20 +18,21 @@ public class Photo extends Model {
 
     @Lob
     @NotEmpty
-    private byte[] photo;
+    @Column(length = 1000000)
+    private String photo;
 
     protected Photo(){}
 
-    public Photo(@NotEmpty String name, @NotEmpty byte[] photo) {
+    public Photo(@NotEmpty String name, @NotEmpty String photo) {
         setName(name);
         setPhoto(photo);
     }
 
-    public byte[] getPhoto() {
+    public String getPhoto() {
         return photo;
     }
 
-    public void setPhoto(byte[] photo) {
+    public void setPhoto(String photo) {
         this.photo = photo;
     }
 

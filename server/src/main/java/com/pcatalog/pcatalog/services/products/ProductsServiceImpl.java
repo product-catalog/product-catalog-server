@@ -70,6 +70,15 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Override
     public Product editProduct(Product product) {
-        return productRepository.save(product);
+        Product product1 = productRepository.findByRecordId(product.getRecordId());
+        product1.setPrice(product.getPrice());
+        Photo photo = photoRepository.findByRecordId(product.getPhoto().getRecordId());
+        photo.setName(product.getPhoto().getName());
+        photo.setPhoto(product.getPhoto().getPhoto());
+        photoRepository.save(photo);
+        product1.setPhoto(product.getPhoto());
+        product1.setDescription(product.getDescription());
+        product1.setName(product.getName());
+        return productRepository.save(product1);
     }
 }
