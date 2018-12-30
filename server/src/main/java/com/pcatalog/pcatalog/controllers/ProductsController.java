@@ -21,6 +21,7 @@ public class ProductsController {
     private ProductsService productsService;
 
     @PostMapping("/new")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Product> newProduct(@RequestBody ProductDto productDto) {
         Product product = productsService.createNewProduct(productDto);
         return new ResponseEntity<>(product, HttpStatus.OK);
@@ -62,6 +63,7 @@ public class ProductsController {
     }
 
     @GetMapping("/getById")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Product> getProductById(@RequestParam Long id){
         return new ResponseEntity<>(productsService.getByRecordId(id), HttpStatus.OK);
     }

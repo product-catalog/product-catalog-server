@@ -22,6 +22,7 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Override
     public Product createNewProduct(ProductDto productDto) {
+        System.out.print(productDto.getPhoto().getName());
         Photo photo = new Photo(productDto.getPhoto().getName(), productDto.getPhoto().getPhoto());
         photoRepository.save(photo);
         Product product = new Product(productDto.getName(), productDto.getDescription(), photo, productDto.getPrice());
