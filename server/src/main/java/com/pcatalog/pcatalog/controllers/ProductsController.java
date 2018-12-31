@@ -28,6 +28,7 @@ public class ProductsController {
     }
 
     @DeleteMapping("/delete")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Product> delete(@RequestParam Long id) {
         Product product = productsService.deleteProduct(id);
         if (product == null){
@@ -69,6 +70,7 @@ public class ProductsController {
     }
 
     @PutMapping("/edit")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Product> editProduct(@RequestBody Product product){
         Product product1 = productsService.editProduct(product);
         return new ResponseEntity<>(product1, HttpStatus.OK);
