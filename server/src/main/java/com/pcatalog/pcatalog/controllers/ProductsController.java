@@ -46,18 +46,21 @@ public class ProductsController {
 
     //filter by name, price, both
     @GetMapping("/getByName")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Iterable<Product>> getByName(@RequestParam String name) {
         Iterable<Product> filteredProductsByName = productsService.getProductByName(name);
         return new ResponseEntity<>(filteredProductsByName, HttpStatus.OK);
     }
 
     @GetMapping("/getByPrice")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Iterable<Product>> getByPrice(@RequestParam Double price) {
         Iterable<Product> filteredProductsByPrice = productsService.getProductByPrice(price);
         return new ResponseEntity<>(filteredProductsByPrice, HttpStatus.OK);
     }
 
     @GetMapping("/getByNameAndPrice")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Iterable<Product>> getByNameAndPrice(@RequestParam String name, @RequestParam Double price) {
         Iterable<Product> filteredProductsByNameAndByPrice = productsService.getProductByNameAndByPrice(name, price);
         return new ResponseEntity<>(filteredProductsByNameAndByPrice, HttpStatus.OK);
