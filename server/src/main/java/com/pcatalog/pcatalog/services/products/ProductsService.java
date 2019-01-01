@@ -10,8 +10,8 @@ public interface ProductsService {
     Product deleteProduct(Long id);
     Iterable<Product> getAllProducts();
     Iterable<Product> getProductByName(String name);
-    Iterable<Product> getProductByPrice(Double price);
-    Iterable<Product> getProductByNameAndByPrice(String name, Double price);
+    Iterable<Product> getProductByPrice(Double min, Double max);
+    Iterable<Product> getProductByNameAndByPrice(String name, Double minPrice, Double maxPrice);
     Product getByRecordId(Long id);
     Product editProduct(Product product);
 }

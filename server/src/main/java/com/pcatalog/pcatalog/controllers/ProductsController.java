@@ -1,16 +1,11 @@
 package com.pcatalog.pcatalog.controllers;
 
 import com.pcatalog.pcatalog.dtos.ProductDto;
-import com.pcatalog.pcatalog.models.Photo;
 import com.pcatalog.pcatalog.models.Product;
-import com.pcatalog.pcatalog.repositories.PhotoRepository;
-import com.pcatalog.pcatalog.repositories.ProductRepository;
 import com.pcatalog.pcatalog.services.products.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -43,8 +38,7 @@ public class ProductsController {
         Iterable<Product> allProducts = productsService.getAllProducts();
         return new ResponseEntity<>(allProducts, HttpStatus.OK);
     }
-
-    //filter by name, price, both
+    
     @GetMapping("/getByName")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Iterable<Product>> getByName(@RequestParam String name) {
@@ -54,15 +48,15 @@ public class ProductsController {
 
     @GetMapping("/getByPrice")
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity<Iterable<Product>> getByPrice(@RequestParam Double price) {
-        Iterable<Product> filteredProductsByPrice = productsService.getProductByPrice(price);
+    public ResponseEntity<Iterable<Product>> getByPrice(@RequestParam Double minPrice, Double maxPrice) {
+        Iterable<Product> filteredProductsByPrice = productsService.getProductByPrice(minPrice, maxPrice);
         return new ResponseEntity<>(filteredProductsByPrice, HttpStatus.OK);
     }
 
     @GetMapping("/getByNameAndPrice")
     @CrossOrigin(origins = "http://localhost:4200")
-    public ResponseEntity<Iterable<Product>> getByNameAndPrice(@RequestParam String name, @RequestParam Double price) {
-        Iterable<Product> filteredProductsByNameAndByPrice = productsService.getProductByNameAndByPrice(name, price);
+    public ResponseEntity<Iterable<Product>> getByNameAndPrice(@RequestParam String name, @RequestParam Double minPrice, @RequestParam Double maxPrice) {
+        Iterable<Product> filteredProductsByNameAndByPrice = productsService.getProductByNameAndByPrice(name, minPrice, maxPrice);
         return new ResponseEntity<>(filteredProductsByNameAndByPrice, HttpStatus.OK);
     }
 
