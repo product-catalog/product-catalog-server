@@ -38,7 +38,7 @@ public class ProductsController {
         Iterable<Product> allProducts = productsService.getAllProducts();
         return new ResponseEntity<>(allProducts, HttpStatus.OK);
     }
-    
+
     @GetMapping("/getByName")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Iterable<Product>> getByName(@RequestParam String name) {
