@@ -31,6 +31,7 @@ public class AuthenticationController {
     private UserService userService;
 
     @PostMapping(value = "/generateToken")
+    @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<?> register(@RequestBody LoginUser loginUser) throws AuthenticationException {
 
         final Authentication authentication = authenticationManager.authenticate(
