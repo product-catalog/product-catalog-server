@@ -6,6 +6,7 @@ import com.pcatalog.pcatalog.services.products.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,6 +17,7 @@ public class ProductsController {
     private ProductsService productsService;
 
     @PostMapping("/new")
+    @PreAuthorize("hasRole('ADMIN')")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Product> newProduct(@RequestBody ProductDto productDto) {
         Product product = productsService.createNewProduct(productDto);
@@ -23,6 +25,7 @@ public class ProductsController {
     }
 
     @DeleteMapping("/delete")
+    @PreAuthorize("hasRole('ADMIN')")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Product> delete(@RequestParam Long id) {
         Product product = productsService.deleteProduct(id);
@@ -33,6 +36,7 @@ public class ProductsController {
     }
 
     @GetMapping("/getAll")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Iterable<Product>> get() {
         Iterable<Product> allProducts = productsService.getAllProducts();
@@ -40,6 +44,7 @@ public class ProductsController {
     }
 
     @GetMapping("/getByName")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Iterable<Product>> getByName(@RequestParam String name) {
         Iterable<Product> filteredProductsByName = productsService.getProductByName(name);
@@ -47,6 +52,7 @@ public class ProductsController {
     }
 
     @GetMapping("/getByPrice")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Iterable<Product>> getByPrice(@RequestParam Double minPrice, Double maxPrice) {
         Iterable<Product> filteredProductsByPrice = productsService.getProductByPrice(minPrice, maxPrice);
@@ -54,6 +60,7 @@ public class ProductsController {
     }
 
     @GetMapping("/getByNameAndPrice")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Iterable<Product>> getByNameAndPrice(@RequestParam String name, @RequestParam Double minPrice, @RequestParam Double maxPrice) {
         Iterable<Product> filteredProductsByNameAndByPrice = productsService.getProductByNameAndByPrice(name, minPrice, maxPrice);
@@ -61,12 +68,14 @@ public class ProductsController {
     }
 
     @GetMapping("/getById")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Product> getProductById(@RequestParam Long id){
         return new ResponseEntity<>(productsService.getByRecordId(id), HttpStatus.OK);
     }
 
     @PutMapping("/edit")
+    @PreAuthorize("hasRole('ADMIN')")
     @CrossOrigin(origins = "http://localhost:4200")
     public ResponseEntity<Product> editProduct(@RequestBody Product product){
         Product product1 = productsService.editProduct(product);
