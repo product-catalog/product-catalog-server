@@ -20,7 +20,6 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Override
     public Product createNewProduct(ProductDto productDto) {
-        System.out.print(productDto.getPhoto().getName());
         Photo photo = new Photo(productDto.getPhoto().getName(), productDto.getPhoto().getPhoto());
         photoRepository.save(photo);
         Product product = new Product(productDto.getName(), productDto.getDescription(), photo, productDto.getPrice());
@@ -44,17 +43,17 @@ public class ProductsServiceImpl implements ProductsService {
     }
 
     @Override
-    public Iterable<Product> getProductByName(String name) {
+    public List<Product> getProductsByName(String name) {
         return productRepository.findAllByNameContains(name);
     }
 
     @Override
-    public Iterable<Product> getProductByPrice(Double minPrice, Double maxPrice) {
+    public List<Product> getProductsByPrice(Double minPrice, Double maxPrice) {
         return productRepository.findAllByPriceBetween(minPrice, maxPrice);
     }
 
     @Override
-    public Iterable<Product> getProductByNameAndByPrice(String name, Double minPrice, Double maxPrice) {
+    public List<Product> getProductsByNameAndByPrice(String name, Double minPrice, Double maxPrice) {
         return productRepository.findAllByNameContainsAndPriceBetween(name, minPrice, maxPrice);
     }
 
@@ -65,15 +64,15 @@ public class ProductsServiceImpl implements ProductsService {
 
     @Override
     public Product editProduct(Product product) {
-        Product product1 = productRepository.findByRecordId(product.getRecordId());
-        product1.setPrice(product.getPrice());
+        Product editedProduct = productRepository.findByRecordId(product.getRecordId());
+        editedProduct.setPrice(product.getPrice());
         Photo photo = photoRepository.findByRecordId(product.getPhoto().getRecordId());
         photo.setName(product.getPhoto().getName());
         photo.setPhoto(product.getPhoto().getPhoto());
         photoRepository.save(photo);
-        product1.setPhoto(product.getPhoto());
-        product1.setDescription(product.getDescription());
-        product1.setName(product.getName());
-        return productRepository.save(product1);
+        editedProduct.setPhoto(product.getPhoto());
+        editedProduct.setDescription(product.getDescription());
+        editedProduct.setName(product.getName());
+        return productRepository.save(editedProduct);
     }
 }
